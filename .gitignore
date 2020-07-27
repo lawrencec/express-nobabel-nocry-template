@@ -121,3 +121,4 @@ dist
 
 build
 .hukumrc
+target/reports/depcruise/index.html

@@ -14,6 +14,7 @@ COPY . .
 FROM dependencies AS test
 RUN pwd
 RUN npm run lint
+RUN npm run dep-tree-report-text
 RUN echo "Lint successful!"
 RUN npm run test
 RUN echo "Tests successful!"

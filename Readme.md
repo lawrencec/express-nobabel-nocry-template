@@ -9,6 +9,9 @@ A starter template for express with:
 
 See `engine` field in `package.json` for minimum `node`/`npm` requirements.
 
+
+![Dependency graph](./target/reports/depcruise/dependencygraph.svg)
+
 ## Developer commands
 
 ### Install

@@ -9,6 +9,9 @@
   },
   "main": "src/server/server.js",
   "scripts": {
+    "dep-tree-report-html": "npx depcruise --include-only \"^src\" --exclude \"__mocks__|test\\.js$\" --config ./.dependency-cruiser.js --output-type err-html  src > target/reports/depcruise/index.html",
+    "dep-tree-report-text": " depcruise -c ./.dependency-cruiser.js src",
+    "dep-tree-svg": " npx depcruise --include-only \"^src\" --config ./.dependency-cruiser.js  --exclude \"__mocks__|test\\.js$\" --output-type dot src | dot -T svg > ./target/reports/depcruise/dependencygraph.svg",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|css|md)\"",
     "lint": "eslint .",
     "start": "node -r esm ./src/server/server.js",
@@ -33,6 +36,7 @@
     "@babel/preset-env": "^7.10.3",
     "babel-jest": "^26.0.1",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "dependency-cruiser": "^9.9.3",
     "eslint": "^7.3.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-recommended": "^4.1.0",
