@@ -1,5 +1,4 @@
 import request from "supertest";
-import logger from "../services/loggerService";
 import app from "../app";
 
 jest.mock("../services/loggerService");
@@ -12,9 +11,6 @@ describe(`GET ${route}`, () => {
       .get(`${route}`)
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
-      .expect(404)
-      .then(() => {
-        expect(logger.info).toHaveBeenCalledWith("Error: Unknown uri: /rick-roll");
-      });
+      .expect(404);
   });
 });

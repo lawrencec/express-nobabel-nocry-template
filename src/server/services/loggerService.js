@@ -1,19 +1,17 @@
-import config from "./configService";
-import winston, { format, transports } from "winston";
-const { combine, timestamp, label, json, printf } = format;
+import config from "../services/configService";
+import pino from "pino-http";
 
-const logFormat = printf(({ level, message, label, timestamp }) => {
-  return `${timestamp} [${label}] ${level}: ${message}`;
-});
-
-const logger = winston.createLogger({
-  format: combine(
-    label({ label: `${config.SERVICE_NAME} ${config.SERVICE_VERSION}` }),
-    timestamp(),
-    logFormat,
-    json()
-  ),
-  transports: [new transports.Console()],
+const logger = pino({
+  prettyPrint: config.ENV !== "production",
+  level: config.LOGGER_LEVEL,
+  mixin: () => {
+    return {
+      service: {
+        name: config.SERVICE_NAME,
+        version: config.SERVICE_VERSION,
+      },
+    };
+  },
 });
 
 export default logger;

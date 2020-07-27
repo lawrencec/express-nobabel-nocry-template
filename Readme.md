@@ -76,7 +76,7 @@ make gha_list # list workflows
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/803a965000e4d2f53e55)
 
-- `/status` - health check endpoint
+- `/health-check` - health check endpoint
     - returns 200 if service is healthy or 503 if service is sick
 
 

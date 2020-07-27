@@ -1,10 +1,10 @@
 import request from "supertest";
-import logger from "../services/loggerService";
+import HealthCheckService from "../services/healthCheckService";
 import app from "../app";
 
-jest.mock("../services/loggerService");
+jest.mock("../services/healthCheckService");
 
-const route = "/status";
+const route = "/health-check";
 
 describe(`GET ${route}`, () => {
   it("should return 200 and log a message", () => {
@@ -14,12 +14,12 @@ describe(`GET ${route}`, () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .then(() => {
-        expect(logger.info).toHaveBeenCalledWith("health check status");
+        expect(HealthCheckService.check).toHaveBeenCalledWith();
       });
   });
 
   it("should return error response when there is an error", () => {
-    logger.info.mockImplementation(() => {
+    HealthCheckService.check.mockImplementation(() => {
       throw new Error("uh-oh");
     });
     return request(app)

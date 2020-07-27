@@ -3,6 +3,7 @@ class HealthCheckError extends Error {
     super(`${message}`);
     this.name = this.constructor.name;
     this.statusCode = 503;
+    this.error = this.message;
   }
 }
 

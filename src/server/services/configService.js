@@ -3,11 +3,14 @@ import pkg from "../../../package.json";
 
 dotenv.config();
 
+const { LOGGER_LEVEL, NODE_ENV, PORT } = process.env;
+
 const config = {
-  PORT: process.env.PORT || 7080,
+  PORT: PORT || 7080,
   SERVICE_NAME: pkg.name,
   SERVICE_VERSION: pkg.version,
-  LOGGER_LEVEL: process.env["LOGGER_LEVEL"],
+  LOGGER_LEVEL: NODE_ENV === "test" ? "silent" : LOGGER_LEVEL,
+  ENV: NODE_ENV,
 };
 
 export default config;
