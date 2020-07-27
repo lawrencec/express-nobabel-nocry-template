@@ -5,7 +5,7 @@ A starter template for express with:
 - Handlers for 404 and health checks
 - tests written in jest and supertest
 - with eslint and prettier pre-configured
-- almost zero babel use; babel is used to transform tests fotr jest but all server code is transformed via esm 
+- almost zero babel use; babel is used to transform tests for jest but all server code is transformed via esm 
 
 See `engine` field in `package.json` for minimum `node`/`npm` requirements.
 
@@ -47,13 +47,31 @@ npm run test:watch
 ```
 
 ### CI commands
+
+There is a `Dockerfile` supplied that can be run using make. Additionally, CI tasks can be run using Github Actions. 
+Both can be tested using the `Makefile`. For running github action workflows locally, [act](https://github.com/nektos/act) is required to be 
+installed.
+
 ```shell-script
-make build
+make build # build the docker image
 ````
 
 ```shell-script
-make run
+make run # run the docker image
 ```
+
+```shell-script
+make gha_build # run the build workflow
+````
+
+```shell script
+make gha_pull_request # Run the pull_request event
+```
+
+```shell-script
+make gha_list # list workflows
+```
+
 ## Example Requests
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/803a965000e4d2f53e55)

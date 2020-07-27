@@ -1,2 +1,8 @@
 node_modules
+Readme.md
 npm-debug.log
+.hukumrc
+.git
+.idea
+.github
+.dockerignore
