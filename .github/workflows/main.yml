@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm lint
+      - run: npm run lint
       - run: npm run dep-tree-report-text
-      - run: npm test
+      - run: npm run test
       - run: npm prune --production
