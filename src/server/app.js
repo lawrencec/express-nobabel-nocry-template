@@ -1,6 +1,6 @@
 import errorHandler from "./middleware/errorHandler";
 import logger from "./services/loggerService";
-import healthCheckRoute from "./routes/health-check";
+import healthCheckRoute from "./routes/healthCheck";
 import notFoundRoute from "./routes/notFound";
 import express from "express";
 
